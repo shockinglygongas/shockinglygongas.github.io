@@ -47,6 +47,14 @@ export default async function GamePage({ params }: { params: Promise<{ id: strin
 					</nav>
 				) : null}
 
+				<div className="rom-patcher">
+					{game.patch ? (
+						<RomPatcher gameId={game.id} title={game.title} patch={game.patch} />
+					) : (
+						<div className="slot" style={{ minHeight: 160, marginTop: 24 }}>todo: need BPS</div>
+					)}
+				</div>
+
 				<div className="game-detail">
 					<section>
 						<h2>Trailer & Screenshots</h2>
@@ -101,12 +109,6 @@ export default async function GamePage({ params }: { params: Promise<{ id: strin
 						</tr>
 					</tbody>
 				</table>
-
-				{game.patch ? (
-					<RomPatcher gameId={game.id} title={game.title} patch={game.patch} />
-				) : (
-					<div className="slot" style={{ minHeight: 160, marginTop: 24 }}>todo: need BPS</div>
-				)}
 
 				<DownloadCount gameId={game.id} label="number of downloads" />
 				<p className="counter">

@@ -12,8 +12,9 @@ export interface EmulatorSupport {
 
 export interface Patch {
 	file: string;
+	description: string;
 	outputName: string;
-	inputMd5?: string;
+	inputCrc32?: string;
 }
 
 export interface GameLink {
@@ -54,7 +55,7 @@ export interface Game {
 export const GAMES: Game[] = [
 	{
 		id: 'royal-sapphire',
-		title: 'Pokémon Royal Sapphire',
+		title: 'Royal Sapphire',
 		status: 'visible',
 		tags: ['map changes', 'story changes', 'nuzlocke & casual friendly', 'high difficulty', 'enhancement'],
 		description: [
@@ -367,10 +368,16 @@ export const GAMES: Game[] = [
 			{ src: '/img/royal-sapphire/screenshot-09.png' },
 		],
 		emulators: { pc: [], ios: [], android: [] },
+		patch: {
+			file: "/patches/royal-sapphire-1.7.ups",
+			description: "Released November 13 2025",
+			outputName: "Royal Sapphire (Version 1.7)",
+			inputCrc32: "bafedae5"
+		},
 	},
 	{
 		id: 'evergreen',
-		title: 'Pokémon Evergreen',
+		title: 'Evergreen',
 		status: 'visible',
 		tags: [],
 		logo: '/img/evergreen/logo.png',
