@@ -2,11 +2,6 @@
 /* customize it to your taste! */
 
 
-/* @FONT-FACES */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300');
-
-
 /* Rom Patcher JS - container */
 #rom-patcher-container {
 	-moz-user-select: none;
@@ -16,22 +11,19 @@
 	user-select: none;
 	line-height: 1.8;
 
-	background-color: #f9fafa;
-	padding: 30px 15px;
-	border-radius: 3px;
-	color: black;
+	color: inherit;
 	max-width: 640px;
 	margin: 0 auto;
 }
 
 /* Rom Pacher JS - text classes */
 #rom-patcher-container .text-mono {
-	font-family: 'Roboto Mono', monospace;
+	font-family: monospace;
 	font-size: 12px;
 }
 
 #rom-patcher-container .text-muted {
-	color: #888;
+	color: var(--muted);
 }
 
 #rom-patcher-container .text-center {
@@ -112,11 +104,11 @@
 
 #rom-patcher-span-crc32 span.clickable:hover {
 	cursor: pointer;
-	color: black
+	color: var(--ink)
 }
 
 #rom-patcher-error-message {
-	color: #ff0030;
+	color: #ff6b7d;
 	padding-left: 20px;
 	background-image: url(assets/icon_x_circle_red.svg);
 	background-repeat: no-repeat;
@@ -136,15 +128,16 @@
 	font-family: inherit;
 	font-size: 100%;
 	outline: none;
-	border: none;
-	border-radius: 3px;
-	background-color: #edefef;
+	border: 2px solid var(--line);
+	background-color: transparent;
+	color: inherit;
 }
 
 #rom-patcher-container input[type=file]:focus:not(:disabled),
 #rom-patcher-container select:focus:not(:disabled),
 #rom-patcher-container input[type=checkbox]:focus:not(:disabled) {
-	box-shadow: #a8fff3 0 0 0 2px;
+	outline: 2px solid var(--line);
+	outline-offset: 2px;
 }
 
 #rom-patcher-container input[type=file] {
@@ -176,12 +169,12 @@
 #rom-patcher-container input[type=file]:hover:not(:disabled),
 #rom-patcher-container select:hover:not(:disabled) {
 	cursor: pointer;
-	background-color: #dee1e1
+	background-color: rgba(255, 255, 255, .08)
 }
 
 #rom-patcher-container input[type=file]:disabled,
 #rom-patcher-container select:disabled {
-	color: #888
+	color: var(--muted)
 }
 
 
@@ -199,7 +192,7 @@
 }
 
 #rom-patcher-container input[type=file].valid {
-	background-color: #d6ffc8;
+	background-color: #1d3a24;
 	padding-right: 28px;
 	background-repeat: no-repeat;
 	background-position: right 12px center;
@@ -208,14 +201,14 @@
 }
 
 #rom-patcher-container input[type=file].valid:not(:disabled):not(.empty):hover {
-	background-color: #adf795;
+	background-color: #24492d;
 	background-position: 8px center, right 12px center;
 	background-size: 16px, 16px;
 	background-image: url(assets/icon_upload.svg), url(assets/icon_check_circle_green.svg);
 }
 
 #rom-patcher-container input[type=file].invalid {
-	background-color: #ffc8c8;
+	background-color: #4a1d22;
 	padding-right: 28px;
 	background-repeat: no-repeat;
 	background-position: right 12px center;
@@ -224,7 +217,7 @@
 }
 
 #rom-patcher-container input[type=file].invalid:not(:disabled):not(.empty):hover {
-	background-color: #ffa3a3;
+	background-color: #5a2329;
 	background-position: 8px center, right 12px center;
 	background-size: 16px, 16px;
 	background-image: url(assets/icon_upload.svg), url(assets/icon_x_circle_red.svg);
@@ -245,11 +238,10 @@
 	width: 20px;
 	height: 20px;
 	background-color: transparent;
-	border-radius: 3px;
 	display: inline-block;
 	vertical-align: middle;
 	position: relative;
-	border: 2px solid #2a9ca5;
+	border: 2px solid var(--line);
 
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMuMiIgZmlsbD0ibm9uZSIgZD0iTSAxLjE5LDcuMTAgNi4wNywxMi4wNiAxNC44OCwzLjMyIi8+PC9zdmc+');
 	background-repeat: no-repeat;
@@ -260,15 +252,10 @@
 
 #rom-patcher-container input[type=checkbox]:hover:not(:disabled) {
 	cursor: pointer;
-	border-color: #3aacb5;
-}
-
-#rom-patcher-container input[type=checkbox]:hover:checked:not(:disabled) {
-	background-color: #3aacb5;
 }
 
 #rom-patcher-container input[type=checkbox]:checked {
-	background-color: #2a9ca5;
+	background-color: var(--muted);
 	background-size: 12px;
 }
 
@@ -285,15 +272,13 @@
 	font-family: inherit;
 	font-size: 100%;
 	min-width: 120px;
-	border-radius: 3px;
-	border: 0;
-	outline: none;
+	border: 2px solid var(--line);
 
 	padding: 10px 20px;
 	margin: 0 5px;
 
-	background-color: #2a9ca5;
-	color: white;
+	background-color: transparent;
+	color: inherit;
 
 	transition: background-color .15s;
 
@@ -310,11 +295,11 @@
 }
 
 #rom-patcher-container button:not(:disabled):hover {
-	background-color: #3aacb5;
+	background-color: var(--line);
+	color: var(--bg);
 }
 
 #rom-patcher-container button:not(:disabled):active {
-	background-color: #297b81;
 	transform: translateY(1px)
 }
 
@@ -339,7 +324,7 @@
 .rom-patcher-spinner:before {
 	width: 6px;
 	height: 6px;
-	background-color: #41bdc7;
+	background-color: var(--ink);
 	border-radius: 3px;
 	display: inline-block;
 	content: "";
@@ -351,7 +336,7 @@
 
 #patch-builder-button-create .rom-patcher-spinner:before,
 #rom-patcher-button-apply .rom-patcher-spinner:before {
-	background-color: #fff;
+	background-color: var(--ink);
 }
 
 
@@ -363,7 +348,7 @@
 	background-image: none;
 	background-color: transparent;
 	color: inherit !important;
-	padding-left: 0;
+	padding-left: 10px;
 }
 
 
@@ -419,13 +404,11 @@
 	min-width: 420px;
 	vertical-align: middle;
 	margin: auto;
-	background-color: white;
-	color: #999;
+	background-color: var(--bg);
+	color: var(--muted);
 	box-sizing: border-box;
-	box-shadow: rgba(0, 0, 0, .7) 0 0 24px;
 	padding: 20px;
-	border-radius: 3px;
-	border: none;
+	border: 2px solid var(--line);
 /*
 	transition: overlay 0.35s allow-discrete, display 0.35s allow-discrete, opacity 0.35s;
 	opacity: 0;
@@ -452,7 +435,7 @@
 }
 
 #rom-patcher-dialog-zip-file-list li {
-	color: #3c3c3c;
+	color: var(--ink);
 	padding: 4px 8px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -460,10 +443,9 @@
 }
 
 #rom-patcher-dialog-zip-file-list li:hover {
-	background-color: #eee;
+	background-color: var(--line);
 	cursor: pointer;
-	color: black;
-	border-radius: 3px;
+	color: var(--bg);
 }
 
 
@@ -499,7 +481,7 @@
 }
 
 #rom-patcher-powered a {
-	color: #cce;
+	color: inherit;
 	padding: 4px 8px;
 	text-decoration: none;
 	opacity: .25;
