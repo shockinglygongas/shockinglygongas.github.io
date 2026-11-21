@@ -9,7 +9,7 @@ export default function HubPage() {
 		<>
 			<SiteHeader current="/" />
 			<main className="panel">
-				<h1>select a game for more information</h1>
+				<h1>Select a game for more information</h1>
 				<div className="game-grid">
 					{GAMES.map((game) => (
 						<GameCard key={game.id} game={game} />
