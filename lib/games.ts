@@ -45,6 +45,8 @@ export interface Game {
 	logo?: string;
 	mascot?: string;
 	cover?: string;
+	accent?: string;
+	effect?: 'bubbles';
 	trailer?: string;
 	screenshots?: Screenshot[];
 	emulators?: EmulatorSupport;
@@ -365,6 +367,8 @@ export const GAMES: Game[] = [
 		],
 		logo: '/img/royal-sapphire/logo-2.png',
 		cover: '/img/royal-sapphire/logo-2.png',
+		accent: '#181883',
+		effect: 'bubbles',
 		trailer: 'MXkiPGt3iRc',
 		links: [
 			{
@@ -404,6 +408,7 @@ export const GAMES: Game[] = [
 		tags: [],
 		logo: '/img/evergreen/logo.png',
 		cover: '/img/evergreen/logo.png',
+		accent: '#1f6b3a',
 		screenshots: [],
 		emulators: GBA_EMULATORS,
 	},
