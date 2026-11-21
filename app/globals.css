@@ -1,8 +1,9 @@
 :root {
-	--ink: #111;
-	--line: #111;
-	--muted: #666;
-	--bg: #fff;
+	color-scheme: dark;
+	--ink: #e8e8e8;
+	--line: #e8e8e8;
+	--muted: #8d8d8d;
+	--bg: #15161a;
 }
 
 * {
