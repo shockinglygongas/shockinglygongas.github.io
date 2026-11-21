@@ -35,7 +35,8 @@
 	- switch to ES6 classes and modules?
 */
 
-const ROM_PATCHER_JS_PATH = './rom-patcher-js/';
+// absolute: pages are served from nested routes
+const ROM_PATCHER_JS_PATH = '/rom-patcher-js/';
 
 const RomPatcherWeb = (function () {
 	const SCRIPT_DEPENDENCIES = [
