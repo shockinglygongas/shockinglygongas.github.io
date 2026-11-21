@@ -38,7 +38,7 @@
 // absolute: pages are served from nested routes
 const ROM_PATCHER_JS_PATH = '/rom-patcher-js/';
 
-const RomPatcherWeb = (function () {
+window.RomPatcherWeb = (function () {
 	const SCRIPT_DEPENDENCIES = [
 		'modules/BinFile.js',
 		'modules/HashCalculator.js',
@@ -1679,7 +1679,7 @@ const PatchBuilderWeb = (function (romPatcherWeb) {
 				});
 			});
 			document.getElementById('patch-builder-button-create').addEventListener('click', function () {
-				const patchFormat=document.getElementById('patch-builder-select-patch-type').value;
+				const patchFormat = document.getElementById('patch-builder-select-patch-type').value;
 				_setElementsStatus(false);
 				_setCreateButtonSpinner(true);
 				webWorkerCreate.postMessage(
@@ -1689,9 +1689,9 @@ const PatchBuilderWeb = (function (romPatcherWeb) {
 						format: patchFormat,
 						metadata: _buildMetadataObject(patchFormat)
 					}, [
-						originalRom._u8array.buffer,
-						modifiedRom._u8array.buffer
-					]
+					originalRom._u8array.buffer,
+					modifiedRom._u8array.buffer
+				]
 				);
 			});
 

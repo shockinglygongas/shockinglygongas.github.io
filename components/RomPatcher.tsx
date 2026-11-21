@@ -9,7 +9,7 @@ interface EmbeddedPatch {
 	file: string;
 	name: string;
 	outputName: string;
-	inputMd5?: string;
+	inputCrc32?: string;
 }
 
 interface PatcherSettings {
@@ -34,17 +34,17 @@ export function RomPatcher({ gameId, title, patch }: { gameId: string; title: st
 			window.RomPatcherWeb?.initialize(
 				{
 					language: 'en',
-					requireValidation: Boolean(patch.inputMd5),
+					requireValidation: Boolean(patch.inputCrc32),
 					allowDropFiles: true,
 					onpatch: () => {
-						downloads.increment(gameId).catch(() => {});
+						downloads.increment(gameId).catch(() => { });
 					},
 				},
 				{
 					file: patch.file,
 					name: title,
 					outputName: patch.outputName,
-					inputMd5: patch.inputMd5,
+					inputCrc32: patch.inputCrc32,
 				},
 			);
 		} catch (err) {
