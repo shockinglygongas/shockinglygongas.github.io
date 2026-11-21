@@ -8,6 +8,7 @@ config.autoAddCss = false;
 export const metadata: Metadata = {
 	title: 'ShockinglyGongas',
 	description: 'Pokémon Royal Sapphire and Evergreen by Gongas / ShockinglyGongas! ',
+	icons: { icon: '/img/mascot.png' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
