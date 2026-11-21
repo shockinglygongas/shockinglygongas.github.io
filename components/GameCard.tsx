@@ -12,7 +12,11 @@ export function GameCard({ game }: { game: Game }) {
 
 	return (
 		<Link className="game-card" href={`/games/${game.id}`} data-status={game.status}>
-			<div className="slot">cover art</div>
+			{game.cover ? (
+				<img className="game-cover" src={game.cover} alt="" loading="lazy" />
+			) : (
+				<div className="slot">cover art</div>
+			)}
 			<strong>{game.title}</strong>
 		</Link>
 	);

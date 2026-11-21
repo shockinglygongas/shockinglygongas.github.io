@@ -4,6 +4,8 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { DownloadCount } from '@/components/DownloadCount';
 import { RomPatcher } from '@/components/RomPatcher';
+import { Carousel } from '@/components/Carousel';
+import { SectionTabs } from '@/components/SectionTabs';
 import { VISIBLE_GAMES, getGame } from '@/lib/games';
 
 export function generateStaticParams() {
@@ -19,20 +21,44 @@ export default async function GamePage({ params }: { params: Promise<{ id: strin
 
 	return (
 		<>
-			<SiteHeader current="/" brand={<div className="slot" style={{ minWidth: 240 }}>{game.title} logo</div>} />
+			<SiteHeader
+				current="/"
+				brand={
+					game.logo ? (
+						<img className="game-logo" src={game.logo} alt={game.title} />
+					) : (
+						<div className="slot" style={{ minWidth: 240 }}>{game.title} logo</div>
+					)
+				}
+			/>
 			<main className="panel">
+				{game.links?.length ? (
+					<nav className="game-nav">
+						{game.links.map((link) => (
+							<a
+								key={link.label}
+								href={link.url}
+								target={link.url.startsWith('http') ? '_blank' : undefined}
+								rel={link.url.startsWith('http') ? 'noreferrer' : undefined}
+							>
+								{link.label}
+							</a>
+						))}
+					</nav>
+				) : null}
+
 				<div className="game-detail">
 					<section>
-						<h2>game images</h2>
-						{game.screenshots?.length ? (
-							game.screenshots.map((shot) => <img key={shot.src} src={shot.src} alt={shot.alt} />)
+						<h2>Trailer & Screenshots</h2>
+						{game.screenshots?.length || game.trailer ? (
+							<Carousel shots={game.screenshots ?? []} trailer={game.trailer} label={game.title} />
 						) : (
 							<div className="slot" style={{ minHeight: 320 }}>screenshots pending</div>
 						)}
 					</section>
 
 					<section>
-						<h2>game info</h2>
+						<h2>Description</h2>
 						{game.description?.length ? (
 							game.description.map((para, i) => <p key={i}>{para}</p>)
 						) : (
@@ -48,7 +74,15 @@ export default async function GamePage({ params }: { params: Promise<{ id: strin
 					</section>
 				</div>
 
-				<h2>emulator support</h2>
+				<SectionTabs
+					tabs={[
+						{ id: 'features', label: 'Features', sections: game.features ?? [] },
+						{ id: 'faq', label: 'FAQ', sections: game.faq ?? [] },
+						{ id: 'credits', label: 'Credits', sections: game.credits ?? [] },
+					]}
+				/>
+
+				<h2>Emulator Support</h2>
 				<table className="emulators">
 					<thead>
 						<tr>

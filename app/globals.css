@@ -40,10 +40,30 @@ a {
 	margin-bottom: 12px;
 }
 
+.site-brand {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
+
 .site-nav {
-	margin-left: auto;
 	display: flex;
 	gap: 8px;
+}
+
+.game-nav {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	gap: 8px;
+	margin-bottom: 16px;
+}
+
+.game-nav a {
+	border: 2px solid var(--line);
+	padding: 8px 12px;
+	text-decoration: none;
+	text-align: center;
 }
 
 .site-nav a {
@@ -65,6 +85,125 @@ a {
 	min-height: 48px;
 	padding: 8px;
 	text-align: center;
+}
+
+.game-cover,
+.game-logo,
+.carousel img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+.game-logo {
+	max-height: 72px;
+	width: auto;
+}
+
+.site-mascot {
+	display: block;
+	width: 64px;
+	height: 64px;
+}
+
+.game-cover {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.carousel {
+	max-width: 480px;
+}
+
+.carousel:focus-visible {
+	outline: 2px solid var(--line);
+	outline-offset: 4px;
+}
+
+.carousel-frame {
+	border: 2px solid var(--line);
+	background: #000;
+	aspect-ratio: 3 / 2;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+}
+
+.carousel-frame img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.carousel-frame iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.thumb-play {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	font-size: 18px;
+	color: #fff;
+	text-shadow: 0 0 4px #000;
+}
+
+.carousel-controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	margin-top: 8px;
+	font-variant-numeric: tabular-nums;
+}
+
+.carousel-controls button {
+	border: 2px solid var(--line);
+	background: none;
+	color: inherit;
+	font: inherit;
+	padding: 2px 12px;
+	cursor: pointer;
+}
+
+.carousel-thumbs {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+	gap: 6px;
+	margin-top: 8px;
+}
+
+.carousel-thumbs button {
+	position: relative;
+	padding: 0;
+	border: 2px solid transparent;
+	background: none;
+	cursor: pointer;
+	line-height: 0;
+	opacity: 0.55;
+}
+
+.carousel-thumbs button:hover {
+	opacity: 1;
+}
+
+.carousel-thumbs button.is-active {
+	border-color: var(--line);
+	opacity: 1;
+}
+
+.carousel-thumbs img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
 }
 
 .game-grid {
@@ -107,6 +246,64 @@ a {
 	font-size: 13px;
 }
 
+.tabs {
+	margin-top: 24px;
+}
+
+.tablist {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	gap: 8px;
+	margin-bottom: 16px;
+}
+
+.tablist button {
+	border: 2px solid var(--line);
+	background: none;
+	color: inherit;
+	font: inherit;
+	padding: 8px 12px;
+	cursor: pointer;
+}
+
+.tablist button.is-active {
+	background: var(--line);
+	color: var(--bg);
+	font-weight: 700;
+}
+
+.tabs article {
+	border-top: 1px solid var(--muted);
+	padding-top: 12px;
+	margin-top: 12px;
+}
+
+.tabs article:first-child {
+	border-top: 0;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.tabs h3 {
+	margin: 0 0 8px;
+	font-size: 1rem;
+}
+
+.tabs p {
+	margin: 0 0 8px;
+}
+
+.tabs ul,
+.tabs ol {
+	margin: 0;
+	padding-left: 20px;
+}
+
+.tabs li {
+	margin-bottom: 6px;
+}
+
 .emulators {
 	width: 100%;
 	border-collapse: collapse;
@@ -138,5 +335,9 @@ a {
 	.game-grid,
 	.game-detail {
 		grid-template-columns: 1fr;
+	}
+
+	.game-nav {
+		grid-auto-flow: row;
 	}
 }
