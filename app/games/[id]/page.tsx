@@ -47,17 +47,15 @@ export default async function GamePage({ params }: { params: Promise<{ id: strin
 					</nav>
 				) : null}
 
-				<center><h2>Download</h2></center>
-
 				<div className="rom-patcher">
+					<center><h2>Download</h2></center>
 					{game.patch ? (
 						<RomPatcher gameId={game.id} title={game.title} patch={game.patch} />
 					) : (
 						<div className="slot" style={{ minHeight: 160, marginTop: 24 }}>todo: need BPS</div>
 					)}
+					<DownloadCount gameId={game.id} label="number of downloads" />
 				</div>
-
-				<DownloadCount gameId={game.id} label="number of downloads" />
 
 				<div className="game-detail">
 					<section>
@@ -106,8 +104,20 @@ export default async function GamePage({ params }: { params: Promise<{ id: strin
 					<tbody>
 						<tr>
 							{(['pc', 'ios', 'android'] as const).map((platform) => (
-								<td key={platform}>
-									{emulators[platform].length ? emulators[platform].join(', ') : <span className="slot">pending</span>}
+								<td key={platform} data-label={{ pc: 'PC', ios: 'iOS', android: 'Android' }[platform]}>
+									{emulators[platform].length ? (
+										<ul>
+											{emulators[platform].map((emu) => (
+												<li key={emu.url}>
+													<a href={emu.url} target="_blank" rel="noreferrer">
+														{emu.label}
+													</a>
+												</li>
+											))}
+										</ul>
+									) : (
+										<span className="slot">pending</span>
+									)}
 								</td>
 							))}
 						</tr>

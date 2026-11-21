@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import type { Feature } from '@/lib/games';
 
 export interface Tab {
@@ -12,6 +12,15 @@ export interface Tab {
 export function SectionTabs({ tabs }: { tabs: Tab[] }) {
 	const [active, setActive] = useState(0);
 	const uid = useId();
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const query = window.matchMedia('(max-width: 640px)');
+		setIsMobile(query.matches);
+		const onChange = () => setIsMobile(query.matches);
+		query.addEventListener('change', onChange);
+		return () => query.removeEventListener('change', onChange);
+	}, []);
 
 	if (!tabs.length) return null;
 
@@ -23,6 +32,29 @@ export function SectionTabs({ tabs }: { tabs: Tab[] }) {
 		setActive(next);
 		document.getElementById(tabId(next))?.focus();
 	};
+
+	const renderContent = (section: Feature) => (
+		<>
+			{section.body?.map((para, j) => (
+				<p key={j}>{para}</p>
+			))}
+			{section.list?.length ? (
+				section.ordered ? (
+					<ol>
+						{section.list.map((item) => (
+							<li key={item}>{item}</li>
+						))}
+					</ol>
+				) : (
+					<ul>
+						{section.list.map((item) => (
+							<li key={item}>{item}</li>
+						))}
+					</ul>
+				)
+			) : null}
+		</>
+	);
 
 	return (
 		<div className="tabs">
@@ -53,25 +85,19 @@ export function SectionTabs({ tabs }: { tabs: Tab[] }) {
 					{tab.sections.length ? (
 						tab.sections.map((section, k) => (
 							<article key={section.heading ?? k}>
-								{section.heading ? <h3>{section.heading}</h3> : null}
-								{section.body?.map((para, j) => (
-									<p key={j}>{para}</p>
-								))}
-								{section.list?.length ? (
-									section.ordered ? (
-										<ol>
-											{section.list.map((item) => (
-												<li key={item}>{item}</li>
-											))}
-										</ol>
-									) : (
-										<ul>
-											{section.list.map((item) => (
-												<li key={item}>{item}</li>
-											))}
-										</ul>
-									)
-								) : null}
+								{section.heading && isMobile ? (
+									<details>
+										<summary>
+											<h3>{section.heading}</h3>
+										</summary>
+										{renderContent(section)}
+									</details>
+								) : (
+									<>
+										{section.heading ? <h3>{section.heading}</h3> : null}
+										{renderContent(section)}
+									</>
+								)}
 							</article>
 						))
 					) : (

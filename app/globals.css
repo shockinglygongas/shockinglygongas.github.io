@@ -313,6 +313,7 @@ a {
 .emulators {
 	width: 100%;
 	border-collapse: collapse;
+	table-layout: fixed;
 	margin-top: 24px;
 }
 
@@ -322,6 +323,11 @@ a {
 	padding: 8px;
 	text-align: left;
 	vertical-align: top;
+}
+
+.emulators ul {
+	margin: 0;
+	padding-left: 20px;
 }
 
 .counter {
@@ -380,4 +386,42 @@ a {
 	.socials {
 		grid-auto-flow: row;
 	}
+
+	.emulators thead {
+		display: none;
+	}
+
+	.emulators td {
+		display: block;
+	}
+
+	.emulators td + td {
+		border-top: 0;
+	}
+
+	.emulators td::before {
+		content: attr(data-label);
+		display: block;
+		font-weight: bold;
+		margin-bottom: 4px;
+	}
+}
+
+.rom-patcher {
+	border: 2px solid var(--line);
+	padding: 16px;
+	margin-top: 24px;
+}
+
+.rom-patcher h2 {
+	margin-top: 0;
+}
+
+.tabs summary {
+	cursor: pointer;
+	margin-bottom: 8px;
+}
+
+.tabs summary h3 {
+	display: inline;
 }

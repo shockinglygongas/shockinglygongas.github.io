@@ -5,9 +5,9 @@ export interface Screenshot {
 }
 
 export interface EmulatorSupport {
-	pc: string[];
-	ios: string[];
-	android: string[];
+	pc: GameLink[];
+	ios: GameLink[];
+	android: GameLink[];
 }
 
 export interface Patch {
@@ -50,6 +50,27 @@ export interface Game {
 	emulators?: EmulatorSupport;
 	patch?: Patch;
 }
+
+const GBA_EMULATORS: EmulatorSupport = {
+	pc: [
+		{ label: 'mGBA', url: 'https://mgba.io/' },
+		{ label: 'RetroArch', url: 'https://www.retroarch.com/platforms.html' },
+		{ label: 'NanoBoyAdvance', url: 'https://codeberg.org/nba-emu/NanoBoyAdvance/releases' },
+		{ label: 'VBA', url: 'https://visualboyadvance.org/' },
+	],
+	ios: [
+		{ label: 'Manic EMU', url: 'https://apps.apple.com/us/app/manic-emu-game-emulator/id6743335790' },
+		{ label: 'SkyEmu', url: 'https://web.skyemu.app/' },
+		{ label: 'RetroArch', url: 'https://apps.apple.com/us/app/retroarch/id6499539433' },
+		{ label: 'Delta', url: 'https://apps.apple.com/us/app/delta-game-emulator/id1048524688' },
+	],
+	android: [
+		{ label: 'Pizza Boy', url: 'https://play.google.com/store/apps/details?id=it.dbtecno.pizzaboygba&hl=en_US' },
+		{ label: 'RetroArch', url: 'https://play.google.com/store/apps/details?id=com.retroarch&hl=en_US' },
+		{ label: 'My Boy!', url: 'https://play.google.com/store/apps/details?id=com.fastemulator.gba&hl=en_US' },
+		{ label: 'John GBA', url: 'https://play.google.com/store/apps/details?id=com.johnemulators.johngbalite&hl=en_US' },
+	],
+};
 
 // TODO: real copy + assets from Gongas
 export const GAMES: Game[] = [
@@ -367,7 +388,7 @@ export const GAMES: Game[] = [
 			{ src: '/img/royal-sapphire/screenshot-08.png' },
 			{ src: '/img/royal-sapphire/screenshot-09.png' },
 		],
-		emulators: { pc: [], ios: [], android: [] },
+		emulators: GBA_EMULATORS,
 		baseRom: "Pokémon Sapphire Version (U) (V 1.1)",
 		patch: {
 			file: "/patches/royal-sapphire-1.7.ups",
@@ -384,7 +405,7 @@ export const GAMES: Game[] = [
 		logo: '/img/evergreen/logo.png',
 		cover: '/img/evergreen/logo.png',
 		screenshots: [],
-		emulators: { pc: [], ios: [], android: [] },
+		emulators: GBA_EMULATORS,
 	},
 ];
 
