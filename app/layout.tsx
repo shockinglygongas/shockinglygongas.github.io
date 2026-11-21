@@ -7,7 +7,7 @@ config.autoAddCss = false;
 
 export const metadata: Metadata = {
 	title: 'ShockinglyGongas',
-	description: 'Pokémon ROM hacks by Gongas.',
+	description: 'Pokémon Royal Sapphire and Evergreen by Gongas / ShockinglyGongas! ',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
