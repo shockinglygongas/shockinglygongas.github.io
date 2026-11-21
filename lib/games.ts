@@ -45,6 +45,7 @@ export interface Game {
 	logo?: string;
 	mascot?: string;
 	cover?: string;
+	comingSoon?: boolean;
 	accent?: string;
 	effect?: 'bubbles';
 	trailer?: string;
@@ -408,9 +409,32 @@ export const GAMES: Game[] = [
 		tags: [],
 		logo: '/img/evergreen/logo.png',
 		cover: '/img/evergreen/logo.png',
+		comingSoon: true,
 		accent: '#1f6b3a',
 		screenshots: [],
 		emulators: GBA_EMULATORS,
+		credits: [
+			{
+				heading: 'Lead Developer / Map Changes / Fight Design',
+				list: ['Gongas'],
+			},
+			{
+				heading: 'Playtesting / Balancing / Feedback Team',
+				list: ['Drayano', 'Vylegon', 'Mal', 'Zemaille', 'Koga', 'Invoise', 'Buggford', 'Dreamie', 'Bagon', 'Max', 'Llamarizzi', 'Vik'],
+			},
+			{
+				heading: 'Spritework & Assets',
+				list: ['idilio', 'goliathgastropod', 'StarGazaar', 'weterpete', 'justalavender', 'LouLilie', 'Ninjacat26', 'SkidMarc25'],
+			},
+			{
+				heading: 'Music & Arrangements',
+				list: ['JoeyZeed', 'zg4north', 'PacoScarso', 'Ninjacat26'],
+			},
+			{
+				heading: 'Tools / Resources',
+				list: ['haven', 'defa', 'HZLA', '7decibel', 'shucaberry'],
+			},
+		],
 	},
 ];
 

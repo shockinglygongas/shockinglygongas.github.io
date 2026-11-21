@@ -231,7 +231,7 @@ a {
 	background: linear-gradient(160deg, var(--accent), #0b0c10);
 }
 
-.game-card:hover {
+.game-card:hover:not([data-status='coming-soon']) {
 	filter: brightness(1.2);
 }
 
@@ -273,6 +273,17 @@ a {
 	.game-card:hover .bubbles {
 		display: none;
 	}
+}
+
+.game-card[data-status='coming-soon'] {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.coming-soon {
+	margin: 8px 0 0;
+	font-weight: 700;
+	font-style: italic;
 }
 
 .game-card[data-status='unrevealed'] {

@@ -12,6 +12,15 @@ export function GameCard({ game }: { game: Game }) {
 		);
 	}
 
+	if (game.comingSoon) {
+		return (
+			<div className="game-card" data-status="coming-soon" style={{ '--accent': game.accent } as CSSProperties}>
+				{game.cover ? <img className="game-cover" src={game.cover} alt={game.title} loading="lazy" /> : null}
+				<p className="coming-soon">coming soon</p>
+			</div>
+		);
+	}
+
 	return (
 		<Link
 			className="game-card"
