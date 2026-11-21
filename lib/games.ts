@@ -368,6 +368,7 @@ export const GAMES: Game[] = [
 			{ src: '/img/royal-sapphire/screenshot-09.png' },
 		],
 		emulators: { pc: [], ios: [], android: [] },
+		baseRom: "Pokémon Sapphire Version (U) (V 1.1)",
 		patch: {
 			file: "/patches/royal-sapphire-1.7.ups",
 			description: "Released November 13 2025",
