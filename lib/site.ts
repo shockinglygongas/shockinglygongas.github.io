@@ -10,6 +10,6 @@ export interface Social {
 export const SOCIALS: Social[] = [
 	{ label: 'YouTube', url: 'https://www.youtube.com/@ShockinglyGongas', icon: faYoutube },
 	{ label: 'Twitch', url: 'https://www.twitch.tv/ShockinglyGongas', icon: faTwitch },
-	{ label: 'Discord', url: 'https://discord.com/invite/UPye6RZBpA', icon: faDiscord },
+	{ label: 'Discord', url: 'https://discord.gg/hngdxXdYA5', icon: faDiscord },
 	{ label: 'X', url: 'https://x.com/ShckglyGongas', icon: faXTwitter },
 ];

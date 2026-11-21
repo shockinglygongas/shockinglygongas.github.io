@@ -10,7 +10,9 @@ const LINKS = [
 export function SiteHeader({ current, brand }: { current: string; brand?: ReactNode }) {
 	return (
 		<header className="site-header panel">
-			<img className="site-mascot" src="/img/mascot.png" alt="" />
+			<Link className="site-mascot" href="/" aria-label="Hub">
+				<img src="/img/mascot.png" alt="" />
+			</Link>
 			<div className="site-brand">
 				{brand ?? <div className="slot" style={{ minWidth: 240 }}>website logoy</div>}
 			</div>
